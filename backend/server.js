@@ -30,10 +30,10 @@ app.set('trust proxy', 1)
 
 const getMongoURI = () => {
   const envURI = (process.env.MONGODB_URI || '').trim()
-  if (envURI.startsWith('mongodb+srv://')) {
+  if (envURI.startsWith('mongodb+srv://') || envURI.startsWith('mongodb://')) {
     return envURI
   }
-  return 'mongodb+srv://goalpilot_db_user:goalpilot_secure_pass2026@cluster0.c6b4hyt.mongodb.net/goalpilot?retryWrites=true&w=majority'
+  return 'mongodb://localhost:27017/goalpilot'
 }
 
 process.env.MONGODB_URI = getMongoURI()
